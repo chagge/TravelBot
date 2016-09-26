@@ -4,24 +4,20 @@
 class DialogueState(object):
 
     def __init__(self):
-        self.__state = {'GENRE': None, 'LOCATION': None, 'MAXIMUM_AMOUNT': None}
+        self.__state = {'PLACE': None, 'SCHEDULE': None}
 
     def update(self, dialogue_act):
-        self.__state['GENRE'] = dialogue_act.get('GENRE', self.__state['GENRE'])
-        self.__state['LOCATION'] = dialogue_act.get('LOCATION', self.__state['LOCATION'])
-        self.__state['MAXIMUM_AMOUNT'] = dialogue_act.get('MAXIMUM_AMOUNT', self.__state['MAXIMUM_AMOUNT'])
+        self.__state['PLACE'] = dialogue_act.get('PLACE', self.__state['PLACE'])
+        self.__state['SCHEDULE'] = dialogue_act.get('SCHEDULE', self.__state['SCHEDULE'])
 
     def has(self, name):
         return self.__state.get(name, None) != None
 
-    def get_area(self):
-        return self.__state['LOCATION']
+    def get_place(self):
+        return self.__state['PLACE']
 
-    def get_food(self):
-        return self.__state['GENRE']
-
-    def get_budget(self):
-        return self.__state['MAXIMUM_AMOUNT']
+    def get_schedule(self):
+        return self.__state['SCHEDULE']
 
     def clear(self):
         self.__init__()

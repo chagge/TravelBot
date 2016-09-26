@@ -2,7 +2,6 @@
 from copy import deepcopy
 
 from dialogue_system.dialogue_management.state import DialogueState
-from dialogue_system.backend.apis.hotpepper import HotPepperGourmetAPI
 from dialogue_system.backend.apis.docomo_dialogue import DocomoDialogAPI
 
 
@@ -21,20 +20,13 @@ class DialogueManager(object):
             reply = api.reply(dialogue_act['utt'])
             sys_act['sys_act_type'] = 'CHAT'
             sys_act['utt'] = reply
-        elif not self.dialogue_state.has('LOCATION'):
-            sys_act['sys_act_type'] = 'REQUEST_LOCATION'
-        elif not self.dialogue_state.has('GENRE'):
-            sys_act['sys_act_type'] = 'REQUEST_GENRE'
-        elif not self.dialogue_state.has('MAXIMUM_AMOUNT'):
-            sys_act['sys_act_type'] = 'REQUEST_BUDGET'
+        elif not self.dialogue_state.has('PLACE'):
+            sys_act['sys_act_type'] = 'RequestPlace'
+        elif not self.dialogue_state.has('SCHEDULE'):
+            sys_act['sys_act_type'] = 'RequestSchedule'
         else:
-            api = HotPepperGourmetAPI()
-            area = self.dialogue_state.get_area()
-            food = self.dialogue_state.get_food()
-            budget = self.dialogue_state.get_budget()
-            restaurant = api.search_restaurant(area=area, food=food,budget=budget)
-            sys_act['sys_act_type'] = 'INFORM_RESTAURANT'
-            sys_act['restaurant'] = restaurant
+            sys_act['sys_act_type'] = 'Suggest'
+            sys_act['restaurant'] = 'suggest place'
             self.dialogue_state.clear()
 
         return sys_act
