@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-import yaml
+# import yaml
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -13,9 +13,9 @@ def read_locations():
     return locations
 
 
-def read_genres():
-    file_path = os.path.join(BASE_DIR, 'genre.yaml')
-    with open(file_path, 'rb') as f:
-        genres = yaml.load(f)
-
-    return genres
+# def read_genres():
+#     file_path = os.path.join(BASE_DIR, 'genre.yaml')
+#     with open(file_path, 'rb') as f:
+#         genres = yaml.load(f)
+#
+#     return genres

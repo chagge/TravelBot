@@ -13,9 +13,7 @@ class AttributeExtractorTest(unittest.TestCase):
         pass
 
     def test_extract(self):
-        attribute = self.extractor.extract(text='ラーメンを食べたい')
-        self.assertEqual(attribute, {'LOCATION': '', 'GENRE': 'ラーメン', 'MAXIMUM_AMOUNT': ''})
-        attribute = self.extractor.extract(text='西新宿のあたり')
-        self.assertEqual(attribute, {'LOCATION': '西新宿', 'GENRE': '', 'MAXIMUM_AMOUNT': ''})
-        attribute = self.extractor.extract(text='1000円以下で')
-        self.assertEqual(attribute, {'LOCATION': '', 'GENRE': '', 'MAXIMUM_AMOUNT': '1000'})
+        attribute = self.extractor.extract(text='9月の第2土曜日あたり')
+        self.assertTrue(attribute['SCHEDULE'] == '9')
+        attribute = self.extractor.extract(text='草津のあたり')
+        self.assertTrue(attribute['PLACE'] == '草津')

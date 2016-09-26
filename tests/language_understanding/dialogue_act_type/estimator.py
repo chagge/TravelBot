@@ -15,15 +15,12 @@ class AttributeExtractorTest(unittest.TestCase):
         pass
 
     def test_extract(self):
-        attribute = self.extractor.extract(text='ラーメンを食べたい')
+        attribute = self.extractor.extract(text='草津のあたり')
         act_type = self.estimator.estimate(attribute)
-        self.assertEqual(act_type, 'INFORM_GENRE')
-        attribute = self.extractor.extract(text='西新宿のあたり')
+        self.assertEqual(act_type, 'RespondPlace')
+        attribute = self.extractor.extract(text='9月の第2土曜日あたり')
         act_type = self.estimator.estimate(attribute)
-        self.assertEqual(act_type, 'INFORM_LOC')
-        attribute = self.extractor.extract(text='1000円以下で')
-        act_type = self.estimator.estimate(attribute)
-        self.assertEqual(act_type, 'INFORM_MONEY')
+        self.assertEqual(act_type, 'RespondSchedule')
         attribute = self.extractor.extract(text='こんにちは')
         act_type = self.estimator.estimate(attribute)
         self.assertEqual(act_type, 'OTHER')
