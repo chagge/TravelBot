@@ -7,10 +7,8 @@ if __name__ == '__main__':
     bot = Bot()
 
     print('S: こんにちは!')
-    time.sleep(2)
     print('S: わたくし舞子があなたの旅行先さがしをお手伝いさせていただきます。')
-    time.sleep(2)
-    print('S: どの辺りに行ってみたいとかありますか？')
+    print('S: 時期はいつ頃とかありますか？')
     while True:
         sent = input('U: ')
         if sent == 'ありがとう':

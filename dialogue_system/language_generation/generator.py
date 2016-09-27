@@ -1,34 +1,21 @@
 # -*- coding: utf-8 -*-
-import sys
+from dialogue_system.reader import read_file
 
 
 class LanguageGenerator(object):
-
     def __init__(self):
-        pass
+        self.__rules = read_file()
 
-    def generate_sentence(self, dialogue_act):
-        sent = ''
-        if 'PLACE' in dialogue_act:
-            sent += '場所は{0}ですね。'.format(dialogue_act['PLACE'])
-        if 'SCHEDULE' in dialogue_act:
-            sent += '{0}ですね。'.format(dialogue_act['SCHEDULE'])
+    def generate_sentence(self, goto):
+        rule = self.match_goto(goto)
 
-        sys_act_type = dialogue_act['sys_act_type']
-        if sys_act_type == 'RequestPlace':
-            sent += 'どの辺りに行ってみたいとかありますか？'
-        elif sys_act_type == 'RequestSchedule':
-            sent += '時期はいつ頃とかありますか?'
-        elif sys_act_type == 'CHAT':
-            sent += dialogue_act['utt']
-        elif sys_act_type == 'Suggest':
-            place = '熱海'
-            if place:
-                sent += 'では、{0}のあたりはどうでしょうか?'.format(place)
-            else:
-                sent += '申し訳ありません。条件に一致するお店が見つかりませんでした。'
-        else:
-            print('Error')
-            sys.exit(-1)
+        return rule.text
 
-        return sent
+    def match_goto(self, goto):
+        for rule in self.__rules:
+            if rule.type != 'output' and rule.type != 'output start':
+                continue
+            if rule.label == goto:
+                return rule
+
+        return None

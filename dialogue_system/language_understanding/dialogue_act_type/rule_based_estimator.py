@@ -8,7 +8,7 @@ class RuleBasedDialogueActTypeEstimator(object):
 
     def estimate(self, attribute):
         if attribute['PLACE'] != '':
-            return 'RespondPlace'
+            return 'RespondSmallArea'
         elif attribute['SCHEDULE'] != '':
             return 'RespondSchedule'
         else:
