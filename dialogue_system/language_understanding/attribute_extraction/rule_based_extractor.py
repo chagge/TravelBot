@@ -16,7 +16,8 @@ class RuleBasedAttributeExtractor(object):
         attribute = {'small_area': self.__extract_small_area(text),
                      'middle_area': self.__extract_middle_area(text),
                      'large_area': self.__extract_large_area(text),
-                     'date': self.__extract_date(text)}
+                     'date': self.__extract_date(text),
+                     'seamt': self.__extract_sea_or_mt(text)}
 
         return attribute
 
@@ -41,6 +42,12 @@ class RuleBasedAttributeExtractor(object):
         large_area = self.__extract_area(text, self.__large_areas)
 
         return large_area
+
+    def __extract_sea_or_mt(self, text):
+        sea_or_mt = [p for p in ['海', '山'] if p in text]
+        sea_or_mt = sea_or_mt[-1] if len(sea_or_mt) > 0 else ''
+
+        return sea_or_mt
 
     def __extract_date(self, text):
         pattern = r'\d月|[一二三四五六七八九十]+月'

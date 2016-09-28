@@ -15,5 +15,7 @@ class RuleBasedDialogueActTypeEstimator(object):
             return 'RespondLargeArea'
         elif attribute['date']:
             return 'RespondSchedule'
+        elif attribute['seamt']:
+            return 'RespondSeaMt'
         else:
             return 'OTHER'

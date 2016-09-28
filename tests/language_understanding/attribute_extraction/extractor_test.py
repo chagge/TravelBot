@@ -21,3 +21,5 @@ class AttributeExtractorTest(unittest.TestCase):
         self.assertTrue(attribute['middle_area'] == '東京')
         attribute = self.extractor.extract(text='関東近郊')
         self.assertTrue(attribute['large_area'] == '関東')
+        attribute = self.extractor.extract(text='海かな')
+        self.assertTrue(attribute['seamt'] == '海')

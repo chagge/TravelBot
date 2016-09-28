@@ -18,15 +18,23 @@ class AttributeExtractorTest(unittest.TestCase):
         attribute = self.extractor.extract(text='草津のあたり')
         act_type = self.estimator.estimate(attribute)
         self.assertEqual(act_type, 'RespondSmallArea')
+
         attribute = self.extractor.extract(text='東京観光をしたい')
         act_type = self.estimator.estimate(attribute)
         self.assertEqual(act_type, 'RespondMiddleArea')
+
         attribute = self.extractor.extract(text='関東近郊らへん')
         act_type = self.estimator.estimate(attribute)
         self.assertEqual(act_type, 'RespondLargeArea')
+
+        attribute = self.extractor.extract(text='海かな')
+        act_type = self.estimator.estimate(attribute)
+        self.assertEqual(act_type, 'RespondSeaMt')
+
         attribute = self.extractor.extract(text='9月の第2土曜日あたり')
         act_type = self.estimator.estimate(attribute)
         self.assertEqual(act_type, 'RespondSchedule')
+
         attribute = self.extractor.extract(text='こんにちは')
         act_type = self.estimator.estimate(attribute)
         self.assertEqual(act_type, 'OTHER')
