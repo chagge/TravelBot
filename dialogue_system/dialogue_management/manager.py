@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 from dialogue_system.dialogue_management.state import DialogueState
 from dialogue_system.backend.apis.docomo_dialogue import DocomoDialogAPI
-from dialogue_system.reader import read_file
+from dialogue_system.knowledge.reader import read_dialogues
 
 
 class DialogueManager(object):
     def __init__(self):
-        self.__rules = read_file()
+        self.__rules = read_dialogues()
         self.dialogue_state = DialogueState()
 
     def update_dialogue_state(self, dialogue_act):

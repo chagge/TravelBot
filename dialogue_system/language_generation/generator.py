@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from dialogue_system.reader import read_file
+from dialogue_system.knowledge.reader import read_dialogues
 
 
 class LanguageGenerator(object):
     def __init__(self):
-        self.__rules = read_file()
+        self.__rules = read_dialogues()
 
     def generate_sentence(self, goto):
         rule = self.match_goto(goto)

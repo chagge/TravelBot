@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
+import csv
+from collections import namedtuple
 # import yaml
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -35,9 +37,21 @@ def read_large_areas():
     return large_areas
 
 
-# def read_genres():
-#     file_path = os.path.join(BASE_DIR, 'genre.yaml')
-#     with open(file_path, 'rb') as f:
-#         genres = yaml.load(f)
-#
-#     return genres
+def read_spots():
+    file_path = os.path.join(BASE_DIR, 'spots.csv')
+    SpotRecord = namedtuple('SpotRecord', 'place, pron, type, pref, area, text, neighborhood, rate, image_path, season, memo')
+    f = open(file_path, 'r')
+    f.readline()  # skip header line
+    spots = [spot for spot in map(SpotRecord._make, csv.reader(f))]
+
+    return spots
+
+
+def read_dialogues():
+    file_path = os.path.join(BASE_DIR, 'dialogue.csv')
+    RuleRecord = namedtuple('RuleRecord', 'type, label, description, act_type, text, if_, learn, goto, acc, mode')
+    f = open(file_path, 'r')
+    f.readline()  # skip header line
+    rules = [rule for rule in map(RuleRecord._make, csv.reader(f))]
+
+    return rules
