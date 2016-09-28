@@ -7,9 +7,13 @@ class RuleBasedDialogueActTypeEstimator(object):
         pass
 
     def estimate(self, attribute):
-        if attribute['PLACE'] != '':
+        if attribute['small_area']:
             return 'RespondSmallArea'
-        elif attribute['SCHEDULE'] != '':
+        elif attribute['middle_area']:
+            return 'RespondMiddleArea'
+        elif attribute['large_area']:
+            return 'RespondLargeArea'
+        elif attribute['date']:
             return 'RespondSchedule'
         else:
             return 'OTHER'
