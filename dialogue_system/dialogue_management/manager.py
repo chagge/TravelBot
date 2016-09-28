@@ -21,7 +21,7 @@ class DialogueManager(object):
         for rule in self.__rules:
             if rule.type != 'input':
                 continue
-            if rule.text == text:
+            if rule.act_type == text:
                 return rule
 
     def welcome(self):
