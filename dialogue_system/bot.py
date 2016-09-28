@@ -17,6 +17,7 @@ class Bot(object):
         self.manager.update_dialogue_state(dialogue_act)
         sys_act_type = self.manager.select_action(dialogue_act)
 
-        sent = self.generator.generate_sentence(sys_act_type)
+        state = self.manager.dialogue_state
+        sent = self.generator.generate_sentence(sys_act_type, state)
 
         return sent
