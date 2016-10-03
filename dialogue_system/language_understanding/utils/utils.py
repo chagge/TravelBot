@@ -57,6 +57,9 @@ def match_rate(str1, str2):
     prons1 = ''.join(tokenizer.get_prons(str1))
     prons2 = ''.join(tokenizer.get_prons(str2))
     dist = Levenshtein.distance(prons1, prons2)
-    match_rate_ = 100 - (float(dist) / len(prons1) * 100)
+    try:
+        match_rate_ = 100 - (float(dist) / len(prons1) * 100)
+    except ZeroDivisionError:
+        match_rate_ = 0
 
     return match_rate_
