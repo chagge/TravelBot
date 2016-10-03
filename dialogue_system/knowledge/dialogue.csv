@@ -13,5 +13,11 @@ input,respond_all,時期と場所を答える,RespondAll,,,,suggest,,
 output,suggest,内部状態をもとに場所を提案する,,では{0}はどうでしょうか？,,,,,
 input,ask_me,システムについて尋ねる,,何ができるの？,,,respond_me,60,
 output,respond_me,できることを答える,,旅行先さがしをお手伝いできます。時期はいつ頃とかありますか？,,,,,
-input,not_understood,わからなかった,,ぺろぺろ,,,say_apology,0,
-output,say_apology,わからなかった,,ごめんなさい。よくわかりませんでした。時期は9月ごろとか、場所は神奈川近郊とか言っていただけると理解できます。,,,,,
+input,not_understood,入力を理解できない時,,,,,say_apology,0,
+output,say_apology,入力を理解できない時,,ごめんなさい。よくわかりませんでした。時期は9月ごろとか、場所は神奈川近郊とか言っていただけると理解できます。,,,,,
+input,hello,こんにちはの挨拶,,こんにちは,,,say_hello,60,
+output,say_hello,こんにちはの挨拶,,こんにちは。旅行先さがしをお手伝いできます。時期はいつ頃とかありますか？,,,,,
+phrase,hello,こんにちはの挨拶,,こんにちは/今日は,,,,,random
+phrase,possible_action,可能な行動,,旅行先さがしをお手伝いできます。,,,,,
+phrase,evening,こんばんは,,こんばんは,,,,,random
+,,,,今晩は,,,,,

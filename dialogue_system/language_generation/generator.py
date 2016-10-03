@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from ..knowledge.reader import read_dialogues
 from ..knowledge.reader import read_spots
+from ..knowledge.phrase import PhraseReplacer
 
 
 class LanguageGenerator(object):
     def __init__(self):
         self.__rules = read_dialogues()
+        self.__phrase_replacer = PhraseReplacer()
 
     def generate_sentence(self, goto, state=None):
         rule = self.match_goto(goto)
@@ -15,7 +17,8 @@ class LanguageGenerator(object):
             text += spot.text
             return text
         else:
-            return rule.text
+            text = self.__phrase_replacer.replace(rule.text)
+            return text
 
     def match_goto(self, goto):
         for rule in self.__rules:
