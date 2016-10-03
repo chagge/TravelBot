@@ -15,8 +15,9 @@ class DialogueManager(object):
 
     def select_action(self, dialogue_act, sent):
         act_type = dialogue_act['user_act_type']
+        print(act_type)
         rule = self.match_text(act_type, sent)
-        return rule.goto
+        return rule.goto if rule else 'say_apology'
 
     def match_text(self, act_type, sent):
         for rule in self.__rules:

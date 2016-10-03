@@ -15,7 +15,7 @@ class JanomeTokenizer(object):
         return words
 
     def get_prons(self, sent):
-        prons = [token.reading for token in self.tokenize(sent)]
+        prons = [token.reading if token.reading != '*' else token.surface for token in self.tokenize(sent)]
         
         return prons
 

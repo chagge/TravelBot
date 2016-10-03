@@ -2,7 +2,7 @@
 import re
 
 from dialogue_system.knowledge.reader import read_small_areas, read_middle_areas, read_large_areas
-from ..utils.utils import kansuji2arabic
+from ..utils.utils import kansuji2arabic, match_rate
 
 
 class RuleBasedAttributeExtractor(object):
@@ -22,7 +22,8 @@ class RuleBasedAttributeExtractor(object):
         return attribute
 
     def __extract_area(self, text, areas):
-        locations = [loc for loc in areas if loc in text]
+        #locations = [loc for loc in areas if loc in text]
+        locations = [loc for loc in areas if match_rate(text, loc) >= 60]
         locations.sort(key=len, reverse=True)
         location = locations[0] if len(locations) > 0 else ''
 
