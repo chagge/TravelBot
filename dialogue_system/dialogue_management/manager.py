@@ -2,6 +2,7 @@
 from ..dialogue_management.state import DialogueState
 from ..backend.apis.docomo_dialogue import DocomoDialogAPI
 from ..knowledge.reader import read_dialogues
+from ..language_understanding.utils.utils import match_rate
 
 
 class DialogueManager(object):
@@ -23,7 +24,7 @@ class DialogueManager(object):
                 continue
             if rule.act_type == act_type:
                 return rule
-            if rule.text == sent:
+            if rule.acc and match_rate(sent, rule.text) >= int(rule.acc):
                 return rule
 
     def welcome(self):
