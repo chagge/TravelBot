@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from dialogue_system.dialogue_management.state import DialogueState
-from dialogue_system.backend.apis.docomo_dialogue import DocomoDialogAPI
-from dialogue_system.knowledge.reader import read_dialogues
+from ..dialogue_management.state import DialogueState
+from ..backend.apis.docomo_dialogue import DocomoDialogAPI
+from ..knowledge.reader import read_dialogues
 
 
 class DialogueManager(object):

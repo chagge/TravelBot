@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from dialogue_system.knowledge.reader import read_dialogues
-from dialogue_system.knowledge.reader import read_spots
+from ..knowledge.reader import read_dialogues
+from ..knowledge.reader import read_spots
 
 
 class LanguageGenerator(object):

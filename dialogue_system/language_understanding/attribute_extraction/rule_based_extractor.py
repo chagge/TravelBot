@@ -2,7 +2,7 @@
 import re
 
 from dialogue_system.knowledge.reader import read_small_areas, read_middle_areas, read_large_areas
-from dialogue_system.language_understanding.utils.utils import kansuji2arabic
+from ..utils.utils import kansuji2arabic
 
 
 class RuleBasedAttributeExtractor(object):

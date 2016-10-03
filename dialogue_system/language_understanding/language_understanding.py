@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import copy
 
-from dialogue_system.language_understanding.attribute_extraction.rule_based_extractor import RuleBasedAttributeExtractor
-from dialogue_system.language_understanding.dialogue_act_type.rule_based_estimator import RuleBasedDialogueActTypeEstimator
+from .attribute_extraction.rule_based_extractor import RuleBasedAttributeExtractor
+from .dialogue_act_type.rule_based_estimator import RuleBasedDialogueActTypeEstimator
 
 
 class RuleBasedLanguageUnderstanding(object):
