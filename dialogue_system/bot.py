@@ -15,7 +15,7 @@ class Bot(object):
         dialogue_act = self.language_understanding.execute(sent)
 
         self.manager.update_dialogue_state(dialogue_act)
-        sys_act_type = self.manager.select_action(dialogue_act)
+        sys_act_type = self.manager.select_action(dialogue_act, sent)
 
         state = self.manager.dialogue_state
         sent = self.generator.generate_sentence(sys_act_type, state)
